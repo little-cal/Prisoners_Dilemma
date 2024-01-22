@@ -302,19 +302,23 @@ def get_action(player, history, opponent_history, score, opponent_score, getting
 
 
 
-    #Team8: Enter Team Name Here
+    #Team8: Donut Mess With Us
     #Team Members:
-    #######################################
+    # Caleb & Stephen
 
 
     elif player == 8:
         if getting_team_name:
-            return 'Enter Team Name Here'
+            return "Donut Mess With Us"
         else:
-            if len(opponent_history)==0: #It's the first round: collude
+            betray = False
+            for letter in opponent_history:
+                if letter == 'b':
+                    betray = True
+            if len(opponent_history) == 0: #It's the first round: collude
                 return 'c'
-            elif history[-1]=='c' and opponent_history[-1]=='b':
-                return 'b' # betray if they were severely punished last time
+            elif betray is True:
+                return 'b'
             else:
                 return 'c' #otherwise collude
 
